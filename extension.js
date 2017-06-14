@@ -104,7 +104,7 @@ function init() {
     track_hover: true });
 
   let icon = new St.Icon({
-    icon_name: 'system-run-symbolic',
+    icon_name: 'view-paged-symbolic',
     style_class: 'system-status-icon' });
 
   button.set_child(icon);
