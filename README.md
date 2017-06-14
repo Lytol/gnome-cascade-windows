@@ -8,10 +8,10 @@ Notes
 
 - Always uses the current workspace
 - Only uses the primary monitor workspaces
+- Default keyboard shortcut is `Super-c`
 
 
 TODO
 ----
 
 - Better icon for the menu bar
-- Allow use of a global hotkey

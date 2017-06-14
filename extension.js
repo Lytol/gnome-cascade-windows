@@ -1,10 +1,16 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Lang = imports.lang;
+const Meta = imports.gi.Meta;
+const Shell = imports.gi.Shell;
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
+const Convenience = Me.imports.convenience;
 
-let cascader, button;
+let cascader, button, settings;
 
 const GUTTER_SIZE = 50;
+const KEY_BINDING = "cascade-windows";
 
 const WindowCascader = new Lang.Class({
   Name: "WindowCascader.WindowCascader",
@@ -12,8 +18,6 @@ const WindowCascader = new Lang.Class({
   _init: function() {},
 
   cascade: function() {
-    global.log("[DEBUG] cascade");
-
     let windows = this._cascadableWindows();
 
     for(let i = 0; i < windows.length; i++) {
@@ -78,7 +82,6 @@ const WindowCascader = new Lang.Class({
     let width = this._workArea().width - ((this._cascadableWindows().length + 1) * this._gutterWidth());
     let height = this._workArea().height - ((this._cascadableWindows().length + 1) * this._gutterHeight());
 
-    global.log("X: " + x + " \ Y: " + y + " \ width: " + width + " \ height: " + height);
     win.move_resize_frame(false, x, y, width, height);
   }
 });
@@ -90,6 +93,8 @@ function _cascade() {
 }
 
 function init() {
+  settings = Convenience.getSettings();
+
   button = new St.Bin({
     style_class: 'panel-button',
     reactive: true,
@@ -109,6 +114,14 @@ function init() {
 function enable() {
   cascader = new WindowCascader();
   Main.panel._rightBox.insert_child_at_index(button, 0);
+
+  Main.wm.addKeybinding(
+    KEY_BINDING,
+    settings,
+    Meta.KeyBindingFlags.NONE,
+    Shell.ActionMode.NORMAL,
+    _cascade
+  );
 }
 
 function disable() {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.cascade-windows" path="/org/gnome/shell/extensions/cascade-windows/">
+    <key type="as" name="cascade-windows">
+      <default><![CDATA[['<Super>c']]]></default>
+      <summary>Cascade windows in the current workspace</summary>
+    </key>
+  </schema>
+</schemalist>
