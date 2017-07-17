@@ -1,7 +1,8 @@
 {
   "uuid": "cascade-windows@lytol.com",
   "name": "Cascade Windows",
-  "shell-version": ["3.22.3"],
+  "url": "https://github.com/Lytol/gnome-cascade-windows",
   "description": "Move and resize windows for a cascade effect",
-  "settings-schema": "org.gnome.shell.extensions.cascade-windows"
+  "settings-schema": "org.gnome.shell.extensions.cascade-windows",
+  "shell-version": ["3.22.3"]
 }
