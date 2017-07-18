@@ -54,7 +54,6 @@ const WindowCascader = new Lang.Class({
       let win = windowActors[i].meta_window;
 
       if (this._isCascadable(win)) {
-        global.log(win.get_title());
         windows.push(win);
       }
     }
