@@ -10,7 +10,8 @@ const Convenience = Me.imports.convenience;
 let cascader, button, settings;
 
 const GUTTER_SIZE = 50;
-const KEY_BINDING = "cascade-windows";
+const KEY_BINDING_KEY = "cascade-windows";
+const FULLSCREEN_ENABLED_KEY = "fullscreen-enabled";
 
 const WindowCascader = new Lang.Class({
   Name: "WindowCascader.WindowCascader",
@@ -53,6 +54,7 @@ const WindowCascader = new Lang.Class({
       let win = windowActors[i].meta_window;
 
       if (this._isCascadable(win)) {
+        global.log(win.get_title());
         windows.push(win);
       }
     }
@@ -82,7 +84,15 @@ const WindowCascader = new Lang.Class({
     let width = this._workArea().width - ((this._cascadableWindows().length + 1) * this._gutterWidth());
     let height = this._workArea().height - ((this._cascadableWindows().length + 1) * this._gutterHeight());
 
+    if (this._includeFullscreen()) {
+      win.unmaximize(Meta.MaximizeFlags.BOTH);
+    }
+
     win.move_resize_frame(false, x, y, width, height);
+  },
+
+  _includeFullscreen: function() {
+    return settings.get_boolean(FULLSCREEN_ENABLED_KEY);
   }
 });
 
@@ -113,10 +123,11 @@ function init() {
 
 function enable() {
   cascader = new WindowCascader();
+
   Main.panel._rightBox.insert_child_at_index(button, 0);
 
   Main.wm.addKeybinding(
-    KEY_BINDING,
+    KEY_BINDING_KEY,
     settings,
     Meta.KeyBindingFlags.NONE,
     Shell.ActionMode.NORMAL,

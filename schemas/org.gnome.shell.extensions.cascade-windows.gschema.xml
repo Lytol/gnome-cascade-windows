@@ -5,5 +5,9 @@
       <default><![CDATA[['<Super>c']]]></default>
       <summary>Cascade windows in the current workspace</summary>
     </key>
+    <key type="b" name="fullscreen-enabled">
+      <default>false</default>
+      <summary>Apply cascade to fullscreen windows</summary>
+    </key>
   </schema>
 </schemalist>
