@@ -5,6 +5,7 @@ const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
+const WorkspaceManager = global.screen || global.workspace_manager;
 const Convenience = Me.imports.convenience;
 
 let cascader, button, settings;
@@ -27,11 +28,11 @@ const WindowCascader = new Lang.Class({
   },
 
   _primaryMonitor: function() {
-    return global.screen.get_primary_monitor();
+      return Main.layoutManager.primaryMonitor.index;
   },
 
   _currentWorkspace: function() {
-    return global.screen.get_active_workspace();
+    return WorkspaceManager.get_active_workspace();
   },
 
   _workArea: function() {

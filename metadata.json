@@ -4,5 +4,11 @@
   "url": "https://github.com/Lytol/gnome-cascade-windows",
   "description": "Move and resize windows for a cascade effect",
   "settings-schema": "org.gnome.shell.extensions.cascade-windows",
-  "shell-version": ["3.22.3"]
+  "shell-version": [
+    "3.22.3",
+    "3.24",
+    "3.26",
+    "3.28",
+    "3.30"
+  ]
 }
