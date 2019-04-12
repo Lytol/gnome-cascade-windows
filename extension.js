@@ -28,7 +28,7 @@ const WindowCascader = new Lang.Class({
   },
 
   _primaryMonitor: function() {
-      return Main.layoutManager.primaryMonitor.index;
+    return Main.layoutManager.primaryMonitor.index;
   },
 
   _currentWorkspace: function() {
